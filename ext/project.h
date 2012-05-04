@@ -82,7 +82,8 @@ typedef int SOCKET;
 
 #ifdef OS_WIN32
 // 21Sep09: windows limits select() to 64 sockets by default, we increase it to 1024 here (before including winsock2.h)
-#define FD_SETSIZE 1024
+// MAX - this line causes Windows to SEGFAULT on Ruby 1.9.3-p194
+//#define FD_SETSIZE 1024
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
